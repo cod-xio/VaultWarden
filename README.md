@@ -1,1 +1,1 @@
-# VaultWarden
+# VaultWarden - Local
