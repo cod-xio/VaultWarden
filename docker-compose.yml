@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: VaultWarden
+    environment:
+       - ADMIN_TOKEN=root
+       - SIGNUPS_ALLOWED=true
+       - INVITATIONS_ALLOWED=true
+       #- DOMAIN=https://vaultwarden.de:8041
+       - ATTACHMENTS_FOLDER=/attachments
+       - DATA_FOLDER:=/persistent     
+       - ICON_CACHE_FOLDER:=/icon_cache
+       - ROCKET_TLS={certs="/ssl/BitWarden.crt",key="/ssl/BitWarden.key"}
+    volumes:
+       - ./VaultWarden/ssl:/ssl
+       - ./VaultWarden/data:/data
+    ports:
+      - 7400:80
+    restart: always
